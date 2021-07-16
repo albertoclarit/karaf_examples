@@ -1,0 +1,80 @@
+https://karaf.apache.org/manual/latest
+https://svn.apache.org/repos/asf/karaf/site/production/manual/latest/http.html#_http_service
+https://github.com/eugenp/tutorials/tree/master/osgi
+https://www.baeldung.com/osgi
+
+https://karaf.apache.org/manual/latest/security
+https://svn.apache.org/repos/asf/karaf/site/production/manual/latest/security-framework.html
+
+https://karaf.apache.org/manual/latest-2.x/users-guide/logging-system.html
+https://stackoverflow.com/questions/29601185/jsf-application-in-apache-karaf-3-0-3
+
+
+
+https://github.com/apache/karaf/tree/main/examples/karaf-war-example
+https://github.com/ops4j/org.ops4j.pax.web/tree/master/samples
+https://github.com/ops4j/org.ops4j.pax.web
+
+
+==============
+Haha
+https://github.com/ops4j/org.ops4j.pax.web/tree/main/samples/war-jsf-cdi
+
+==============
+
+bundle:install mvn:com.inkman/osgi-intro-sample-activator/1.0-SNAPSHOT
+
+bundle:list
+bundle:uninstall id
+
+bundle:start id
+bundle:stop id
+
+https://stackoverflow.com/questions/40790543/unresolved-requirement-osgi-component
+https://stackoverflow.com/questions/13014786/exception-could-not-find-factory-javax-faces-application-applicationfactory
+
+====== install features ========
+
+feature:install scr  # service component runtime
+
+
+feature:install http
+feature:install webconsole
+feature:install http-whiteboard
+feature:install war
+feature:install pax-jsf-support
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## install  -s  mvn:org.ops4j.pax.web/pax-web-spi/7.2.23
+===== not used =======
+#install -s  mvn:org.apache.myfaces.core/myfaces-impl/2.2.13
+#install -s  mvn:org.apache.myfaces.core/myfaces-api/2.2.13
+
+#install -s mvn:org.apache.commons/commons-lang3/3.12.0
+#feature:install pax-jsf-resources-support
+#feature:install pax-cdi
+==feature:install pax-cdi-web
+==feature:install pax-cdi-web-weld
+#feature:install pax-cdi-web-weld-jetty
+#feature:install pax-cdi-web-openwebbeans
+===== not used =======
+
+
+bundle:install -s webbundle:mvn:com.inkman/web-basic/1.0-SNAPSHOT/war?Web-ContextPath=web-basic
+-s meaning start
+web:list
+web:stop id
+
+log:display

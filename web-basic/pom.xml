@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>osgi</artifactId>
+        <groupId>com.inkman</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>web-basic</artifactId>
+    <packaging>war</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <properties>
+        <servlet.spec.groupId>javax.servlet</servlet.spec.groupId>
+        <servlet.spec.artifactId>javax.servlet-api</servlet.spec.artifactId>
+        <servlet.spec.version>3.1.0</servlet.spec.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <bundle-plugin.version>5.1.2</bundle-plugin.version>
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.core</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${servlet.spec.groupId}</groupId>
+            <artifactId>${servlet.spec.artifactId}</artifactId>
+            <version>${servlet.spec.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.myfaces.core</groupId>
+            <artifactId>myfaces-api</artifactId>
+            <version>2.2.12</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+
+    </dependencies>
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${bundle-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>baseline</id>
+                        <goals>
+                            <goal>baseline</goal>
+                        </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>bundle</id>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                        <configuration>
+                            <supportedProjectTypes>
+                                <supportedProjectType>war</supportedProjectType>
+                            </supportedProjectTypes>
+                            <instructions>
+                                <_wab>${project.build.directory}/web-basic-${project.version}</_wab>
+                                <Web-ContextPath>/web-basic</Web-ContextPath>
+
+                                <Embed-Directory>WEB-INF/lib</Embed-Directory>
+                                <Embed-Dependency>*;scope=compile</Embed-Dependency>
+
+                                <Import-Package>
+                                    javax.servlet,
+                                    javax.servlet.http,
+                                    javax.faces.bean,
+                                    javax.faces.webapp
+                                </Import-Package>
+                                <DynamicImport-Package>
+                                    org.apache.myfaces.*
+                                </DynamicImport-Package>
+                                <Export-Package />
+                                <Private-Package />
+
+                                <Bundle-Name>${project.description}</Bundle-Name>
+                                <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                            </instructions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+
+
+</project>
