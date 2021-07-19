@@ -15,19 +15,44 @@
  */
 package org.ops4j.pax.cdi.sample4.web;
 
-import org.ops4j.pax.cdi.api.Component;
 
+
+import com.inkman.osgi.sample.service.definition.Greeter;
+import org.ops4j.pax.cdi.api.Component;
+import org.ops4j.pax.cdi.api.Dynamic;
+import org.ops4j.pax.cdi.api.Immediate;
+import org.ops4j.pax.cdi.api.Service;
+
+
+
+import javax.annotation.PostConstruct;
+
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 
-
 //@ManagedBean(name="framework")
-//@RequestScoped
+//@javax.faces.bean.RequestScoped
 @Named("framework")
 @RequestScoped
 public class FrameworkBean {
+    @Inject
+    public FrameworkBean() {
+    }
+
+    @PostConstruct
+    public void postConstruct () {
+        System.out.println("postConstruct is called");
+    }
+/*
+    @Inject
+    @Dynamic
+    @Service
+    Greeter greeter;*/
+
 
     private String name;
 
@@ -42,6 +67,6 @@ public class FrameworkBean {
     }
 
     public void submit() {
-        System.out.println("form submitted");
+        System.out.println("form submitted ");
     }
 }

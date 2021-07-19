@@ -54,6 +54,7 @@ bundle:install -s mvn:org.ops4j.pax.cdi.samples/pax-cdi-sample4-jsf/1.0-SNAPSHOT
 bundle:install -s webbundle:mvn:com.inkman/web-cdi/1.0-SNAPSHOT/war?Web-ContextPath=web-cdi
 -s meaning start
 web:list
+http:list
 web:stop id
 
 log:display
@@ -65,6 +66,6 @@ bundle:find-class javax.faces.application.ApplicationFactory
 package:exports | grep -i com.sun.el
 package:exports | grep -i javax.faces.webapp
 package:exports | grep -i org.osgi.core
-
+package:exports | grep -i  javax.faces.application
 
 https://stackoverflow.com/questions/29678113/el-implementation-is-not-found-for-hibernate-validator-in-osgi-container
