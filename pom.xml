@@ -14,15 +14,117 @@
         <javax.json.version>1.1</javax.json.version>
         <osgi.version>6.0.0</osgi.version>
         <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
+        <plugin.maven-antrun-plugin>1.8</plugin.maven-antrun-plugin>
+        <plugin.maven-clean-plugin>3.1.0</plugin.maven-clean-plugin>
+        <plugin.maven-compiler-plugin>3.8.1</plugin.maven-compiler-plugin>
+        <plugin.maven-dependency-plugin>3.1.1</plugin.maven-dependency-plugin>
+        <plugin.maven-deploy-plugin>2.8.2</plugin.maven-deploy-plugin>
+        <plugin.maven-enforcer-plugin>3.0.0-M1</plugin.maven-enforcer-plugin>
+        <plugin.dependency.org.commonjava.maven.enforcer>1.3</plugin.dependency.org.commonjava.maven.enforcer>
+        <plugin.maven-failsafe-plugin>2.22.1</plugin.maven-failsafe-plugin>
+        <plugin.maven-gpg-plugin>1.6</plugin.maven-gpg-plugin>
+        <plugin.maven-install-plugin>2.5.2</plugin.maven-install-plugin>
+        <plugin.maven-invoker-plugin>3.2.2</plugin.maven-invoker-plugin>
+        <plugin.maven-jar-plugin>3.1.2</plugin.maven-jar-plugin>
+        <plugin.maven-javadoc-plugin>3.1.0</plugin.maven-javadoc-plugin>
+        <plugin.maven-release-plugin>2.5.3</plugin.maven-release-plugin>
+        <plugin.maven-remote-resources-plugin>1.6.0</plugin.maven-remote-resources-plugin>
+        <plugin.maven-resources-plugin>3.1.0</plugin.maven-resources-plugin>
+        <plugin.dependency.maven-filtering>3.1.1</plugin.dependency.maven-filtering>
+        <plugin.maven-shade-plugin>3.2.1</plugin.maven-shade-plugin>
+        <plugin.maven-site-plugin>3.7.1</plugin.maven-site-plugin>
+        <plugin.maven-source-plugin>3.1.0</plugin.maven-source-plugin>
+        <plugin.maven-surefire-plugin>2.22.2</plugin.maven-surefire-plugin>
+
+        <!-- Other Maven plugins (and their dependencies) -->
+        <plugin.jacoco-maven-plugin>0.8.6</plugin.jacoco-maven-plugin>
+        <plugin.asciidoctor-maven-plugin>1.5.2.1</plugin.asciidoctor-maven-plugin>
+        <!-- version 5.1.1 generates bad extender requirements and it turnes out that 1.0.0 >= 1.0 is false -->
+        <plugin.felix.maven-bundle-plugin>3.3.0</plugin.felix.maven-bundle-plugin>
+        <plugin.mojo.build-helper-maven-plugin>3.2.0</plugin.mojo.build-helper-maven-plugin>
+        <plugin.ops4j.osgi-report-maven-plugin>0.1.1</plugin.ops4j.osgi-report-maven-plugin>
+        <plugin.servicemix.depends-maven-plugin>1.4.0</plugin.servicemix.depends-maven-plugin>
+
+        <!-- versions of Maven dependencies (sorted and groupped) -->
+        <version.biz.aQute.bnd>5.2.0</version.biz.aQute.bnd>
+        <version.ch.qos.logback>1.2.3</version.ch.qos.logback>
+        <version.commons-collections>3.2.2</version.commons-collections>
+        <version.commons-dbcp>1.4</version.commons-dbcp>
+        <version.commons-lang>2.6</version.commons-lang>
+        <version.commons-pool>1.6</version.commons-pool>
+
+        <version.javax.annotation>1.3.2</version.javax.annotation>
+        <version.javax.el>3.0.0</version.javax.el>
+        <version.javax.enterprise.cdi>1.2</version.javax.enterprise.cdi>
+        <version.javax.faces>2.3</version.javax.faces>
+        <version.javax.interceptor>1.2.2</version.javax.interceptor>
+        <version.javax.persistence>2.2</version.javax.persistence>
+        <version.javax.servlet>3.1.0</version.javax.servlet>
+        <version.javax.servlet.jsp>2.3.3</version.javax.servlet.jsp>
+        <version.javax.transaction>1.2</version.javax.transaction>
+        <version.javax.validation>1.1.0.Final</version.javax.validation>
+
+        <version.io.undertow>1.4.28.Final</version.io.undertow>
+        <version.junit>4.13.1</version.junit>
+        <version.net.bytebuddy>1.10.20</version.net.bytebuddy>
+
+        <version.org.apache.deltaspike>1.8.1</version.org.apache.deltaspike>
+        <version.org.apache.derby>10.8.2.2</version.org.apache.derby>
+        <version.org.apache.felix.configadmin>1.9.20</version.org.apache.felix.configadmin>
+        <version.org.apache.felix.eventadmin>1.6.2</version.org.apache.felix.eventadmin>
+        <version.org.apache.felix.framework>5.6.12</version.org.apache.felix.framework>
+        <version.org.apache.felix.metatype>1.2.4</version.org.apache.felix.metatype>
+        <!-- It has to be 2.0.x (pax-cdi-extension private-packages felix-scr) -->
+        <version.org.apache.felix.scr>2.0.12</version.org.apache.felix.scr>
+        <version.org.apache.felix.utils>1.11.6</version.org.apache.felix.utils>
+        <version.org.apache.geronimo.bundles.scannotation>1.0.2_1</version.org.apache.geronimo.bundles.scannotation>
+        <version.org.apache.karaf>4.2.10</version.org.apache.karaf>
+        <version.org.apache.logging.log4j>2.14.0</version.org.apache.logging.log4j>
+        <version.org.apache.openjpa>2.4.3</version.org.apache.openjpa>
+        <version.org.apache.openwebbeans>1.7.6</version.org.apache.openwebbeans>
+        <version.org.apache.servicemix.bundles.asm>3.3.1_1</version.org.apache.servicemix.bundles.asm>
+        <!-- javax.inject/javax.inject/1 is not an OSGi bundle -->
+        <version.org.apache.servicemix.bundles.javax-inject>1_3</version.org.apache.servicemix.bundles.javax-inject>
+        <version.org.apache.xbean>4.18</version.org.apache.xbean>
+        <version.org.apache.xbean.shaded>4.16</version.org.apache.xbean.shaded>
+
+        <!-- 3.13.0.v20171204-1916 exports org.osgi.framework package with version 1.9 -->
+        <version.org.eclipse.tycho>3.11.2.v20161107-1947</version.org.eclipse.tycho>
+        <version.org.eclipse.jetty>9.4.36.v20210114</version.org.eclipse.jetty>
+        <version.org.jboss.classfilewriter>1.2.1.Final</version.org.jboss.classfilewriter>
+        <version.org.jboss.logging>3.4.1.Final</version.org.jboss.logging>
+        <!-- Latest available 2.x version (CDI spec 1.2, JavaEE 7) -->
+        <version.org.jboss.weld>2.4.8.Final</version.org.jboss.weld>
+        <version.org.mockito>3.7.7</version.org.mockito>
+        <version.org.objenesis>3.1</version.org.objenesis>
+        <version.org.ops4j.base>1.5.1</version.org.ops4j.base>
+        <version.org.ops4j.pax.exam>4.13.4</version.org.ops4j.pax.exam>
+        <version.org.ops4j.pax.jpa>0.3.0</version.org.ops4j.pax.jpa>
+        <version.org.ops4j.pax.jdbc>1.5.0</version.org.ops4j.pax.jdbc>
+        <version.org.ops4j.pax.logging>1.11.9</version.org.ops4j.pax.logging>
+        <version.org.ops4j.pax.swissbox>1.8.4</version.org.ops4j.pax.swissbox>
+        <version.org.ops4j.pax.tinybundles>3.0.0</version.org.ops4j.pax.tinybundles>
+        <version.org.ops4j.pax.url>2.6.7</version.org.ops4j.pax.url>
+        <version.org.ops4j.pax.web>7.2.22</version.org.ops4j.pax.web>
+        <version.org.osgi>6.0.0</version.org.osgi>
+        <version.org.primefaces>7.0</version.org.primefaces>
+        <version.org.slf4j>1.7.30</version.org.slf4j>
+
+        <jersey.version>1.13</jersey.version>
+
     </properties>
 
     <modules>
      <!--   <module>osgi-intro-sample-activator</module>
 
-        <module>osgi-intro-sample-client</module>-->
+        <module>osgi-intro-sample-client</module>
         <module>osgi-intro-sample-service</module>
         <module>web-basic</module>
-        <module>web-cdi</module>
+     -->
+        <module>pax-cdi-sample4-jsf</module>
     </modules>
 
     <dependencyManagement>
@@ -68,6 +170,37 @@
                 <version>${osgi.version}</version>
                 <scope>provided</scope>
             </dependency>-->
+
+            <dependency>
+                <groupId>javax.faces</groupId>
+                <artifactId>javax.faces-api</artifactId>
+                <version>${version.javax.faces}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>${version.javax.enterprise.cdi}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.servicemix.bundles</groupId>
+                <artifactId>org.apache.servicemix.bundles.javax-inject</artifactId>
+                <version>${version.org.apache.servicemix.bundles.javax-inject}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>${version.javax.annotation}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${version.javax.servlet}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.primefaces</groupId>
+                <artifactId>primefaces</artifactId>
+                <version>${version.org.primefaces}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -1,0 +1,70 @@
+
+
+
+bundle:install mvn:com.inkman/osgi-intro-sample-activator/1.0-SNAPSHOT
+
+bundle:list
+bundle:uninstall id
+
+bundle:start id
+bundle:stop id
+
+====== install features ========
+
+
+# service component runtime
+feature:install scr
+feature:install http
+feature:install webconsole
+feature:install http-whiteboard
+feature:install war
+feature:install pax-jsf-support
+feature:install pax-cdi
+feature:install pax-cdi-weld
+feature:install pax-cdi-web
+feature:install pax-cdi-web-weld-jetty
+
+install -s mvn:org.apache.commons/commons-lang3/3.12.0
+feature:install pax-jsf-resources-support
+
+feature:install pax-cdi-openwebbeans
+feature:install pax-cdi-web-openwebbeans
+feature:install hibernate-validator
+=============
+
+feature:uninstall pax-cdi-openwebbeans
+feature:uninstall pax-cdi-web-openwebbeans
+
+feature:uninstall pax-jsf-resources-support
+#install -s  mvn:org.apache.myfaces.core/myfaces-impl/2.2.13
+#install -s  mvn:org.apache.myfaces.core/myfaces-api/2.2.13
+
+#install -s mvn:org.apache.commons/commons-lang3/3.12.0
+#feature:install pax-jsf-resources-support
+==feature:install pax-cdi-web-weld
+
+#feature:install pax-cdi-web-openwebbeans
+
+
+bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT
+
+bundle:install -s mvn:org.ops4j.pax.cdi.samples/pax-cdi-sample4-jsf/1.0-SNAPSHOT
+
+
+bundle:install -s webbundle:mvn:com.inkman/web-cdi/1.0-SNAPSHOT/war?Web-ContextPath=web-cdi
+-s meaning start
+web:list
+web:stop id
+
+log:display
+
+javax.faces.application.ApplicationFactory
+bundle:find-class com.sun.el.ExpressionFactoryImpl  - is in hibernate-validator
+bundle:find-class javax.faces.application.ApplicationFactory
+
+package:exports | grep -i com.sun.el
+package:exports | grep -i javax.faces.webapp
+package:exports | grep -i org.osgi.core
+
+
+https://stackoverflow.com/questions/29678113/el-implementation-is-not-found-for-hibernate-validator-in-osgi-container
