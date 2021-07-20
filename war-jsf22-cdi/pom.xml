@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.ops4j.pax.web.samples</groupId>
+	<artifactId>war-jsf22-cdi</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>OPS4J Pax Web - Samples - WAR Extender - JSF 2.2/CDI 1.2</name>
+
+	<!-- Project dependencies -->
+
+	<properties>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>osgi.core</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>2.2.12</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-spi</artifactId>
+			<version>7.2.23</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.cdi</groupId>
+			<artifactId>pax-cdi-api</artifactId>
+			<version>1.1.4</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>5.1.2</version>
+				<executions>
+					<execution>
+						<id>baseline</id>
+						<goals>
+							<goal>baseline</goal>
+						</goals>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</execution>
+					<execution>
+						<id>bundle</id>
+						<goals>
+							<goal>bundle</goal>
+						</goals>
+						<configuration>
+							<supportedProjectTypes>
+								<supportedProjectType>war</supportedProjectType>
+							</supportedProjectTypes>
+							<instructions>
+								<_wab>${project.build.directory}/war-jsf22-cdi-${project.version}</_wab>
+								<Web-ContextPath>/war-jsf22-cdi</Web-ContextPath>
+
+								<Embed-Directory>WEB-INF/lib</Embed-Directory>
+								<Embed-Dependency>*;scope=compile</Embed-Dependency>
+
+								<Import-Package>
+									javax.inject,
+									javax.servlet,
+									javax.servlet.http,
+									javax.faces.bean,
+									javax.faces.webapp,
+									javax.enterprise*,
+									org.osgi.service.url
+								</Import-Package>
+								<DynamicImport-Package>
+									org.apache.myfaces.*,
+									org.jboss.weld.*,
+									org.ops4j.pax.web.*,
+									org.ops4j.pax.cdi.*
+								</DynamicImport-Package>
+								<Export-Package />
+								<Private-Package />
+
+								<Bundle-Name>${project.description}</Bundle-Name>
+								<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+								<!--
+									we need org.ops4j.pax.cdi.faces cap, to detect /META-INF/faces-config.xml
+									fragment from given weld/openwebbeans pax-cdi bundle
+									org.ops4j.pax.cdi.faces
+									org.ops4j.pax.cdi.faces
+								-->
+								<Require-Capability>
+									osgi.extender; filter:="(osgi.extender=pax.cdi)",
+									org.ops4j.pax.cdi.extension; filter:="(extension=pax-cdi-extension)",
+									org.ops4j.pax.cdi.faces
+								</Require-Capability>
+							</instructions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

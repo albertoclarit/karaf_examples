@@ -123,8 +123,10 @@
         <module>osgi-intro-sample-client</module>
         <module>osgi-intro-sample-service</module>
         <module>web-basic</module>
-     -->
         <module>pax-cdi-sample4-jsf</module>
+     -->
+        <module>war-jsf22-cdi</module>
+
     </modules>
 
     <dependencyManagement>
@@ -164,13 +166,13 @@
                 <artifactId>javax.json</artifactId>
                 <version>${javax.json.version}</version>
             </dependency>
+            >-->
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
                 <version>${osgi.version}</version>
                 <scope>provided</scope>
-            </dependency>-->
-
+            </dependency>
             <dependency>
                 <groupId>javax.faces</groupId>
                 <artifactId>javax.faces-api</artifactId>
