@@ -43,6 +43,12 @@ feature:install webconsole
 feature:install http-whiteboard
 feature:install war
 feature:install pax-jsf-support
+
+ uninstall 2.2
+install  -s  mvn:org.apache.myfaces.core/myfaces-api/2.3.8
+install  -s  mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
+
+
 feature:install pax-cdi
 feature:install pax-cdi-web
 feature:install pax-cdi-web-weld
@@ -75,3 +81,11 @@ web:list
 web:stop id
 
 log:display
+
+
+
+install  -s  mvn:commons-collections/commons-collections/3.2.2
+install  -s  mvn:commons-beanutils/commons-beanutils/1.9.4
+install  -s  mvn:commons-digester/commons-digester/2.0
+
+install  -s  mvn:commons-digester/commons-digester/2.0

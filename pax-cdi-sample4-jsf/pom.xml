@@ -126,7 +126,7 @@
                             org.apache.myfaces.*,
                             org.jboss.weld.*,
                             org.ops4j.pax.cdi.*,
-                             org.apache.webbeans.*,
+                            org.apache.webbeans.*,
                             javax.faces.application.*
                         </DynamicImport-Package>
                        <!--<Import-Package>
