@@ -29,6 +29,9 @@
 		<h:inputText id="what" value="#{hello.what}"/>
 		<br/>
 		<h:commandButton value="say" action="#{hello.say}"/>
+
+		<h:commandButton value="stop bundle" action="#{hello.stopBundle}"/>
+		<h:commandButton value="start bundle" action="#{hello.startBundle}"/>
 	</h:form>
 	<br/>
 	<h:outputText value="#{hello.result}" rendered="#{not empty(hello.what)}"/>

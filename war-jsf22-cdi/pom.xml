@@ -58,6 +58,12 @@
 			<version>1.1.4</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.inkman</groupId>
+			<artifactId>osgi-intro-sample-service</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -93,15 +99,18 @@
 								<Embed-Dependency>*;scope=compile</Embed-Dependency>
 
 								<Import-Package>
+									com.inkman.osgi.sample.service.definition;resolution:="optional",
 									javax.inject,
 									javax.servlet,
 									javax.servlet.http,
 									javax.faces.bean,
 									javax.faces.webapp,
 									javax.enterprise*,
-									org.osgi.service.url
+									org.osgi.service.url,
+									org.osgi.framework
 								</Import-Package>
 								<DynamicImport-Package>
+									com.inkman.osgi.sample.service.definition.*,
 									org.apache.myfaces.*,
 									org.jboss.weld.*,
 									org.ops4j.pax.web.*,

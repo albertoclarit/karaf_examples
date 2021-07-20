@@ -14,7 +14,7 @@ public class GreeterImpl implements Greeter, BundleActivator {
     private ServiceRegistration<Greeter> registration;
 
     @Override public String sayHiTo(String name) {
-        return "Hello " + name;
+        return "Hello From Greeter : [" + name + "]";
     }
 
     @Override public void start(BundleContext context) throws Exception {

@@ -22,14 +22,11 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.ops4j.pax.cdi.api.Component;
-import org.ops4j.pax.cdi.api.Dynamic;
-import org.ops4j.pax.cdi.api.Filter;
-import org.ops4j.pax.cdi.api.Immediate;
-import org.ops4j.pax.cdi.api.PrototypeScoped;
-import org.ops4j.pax.cdi.api.Service;
-import org.ops4j.pax.web.service.spi.ServerControllerFactory;
-import org.osgi.service.url.URLStreamHandlerService;
+
+import com.inkman.osgi.sample.service.definition.Greeter;
+import org.ops4j.pax.cdi.api.*;
+import org.osgi.framework.*;
+import org.osgi.framework.wiring.FrameworkWiring;
 
 @Named("hello")
 @Immediate
@@ -44,16 +41,16 @@ public class Hello {
     private String result;
     private String test = "hello from working JSF 2.2/CDI 1.2 example";
 
-    @Inject
-    @Dynamic
-    @Service
-    @Filter("(!(url.handler.protocol=mvn))")
-    private URLStreamHandlerService handler;
+
 
     @Inject
     @Dynamic
     @Service
-    private ServerControllerFactory serverControllerFactory;
+    @Optional
+    @Greedy
+    private Greeter greeter;
+
+
 
     public void setWhat(String what) {
         this.what = what;
@@ -68,11 +65,72 @@ public class Hello {
     }
 
     public String getTest() {
+
+        return String.format("TEST");
+    }
+
+    public void say() {
+        result = String.format("%s !", greeter.sayHiTo(what));
+    }
+
+    public void stopBundle() {
+       // System.out.println("Stopping Greeter Service");
+        BundleContext bc= FrameworkUtil.getBundle(this.getClass()).getBundleContext();
+
+
+      ServiceReference<Greeter> greeterServiceReference = bc.getServiceReference(Greeter.class);
+        try {
+            greeterServiceReference.getBundle().stop();
+        } catch (BundleException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void startBundle() {
+       // System.out.println("Starting Greeter Service");
+        Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+        BundleContext bc= bundle.getBundleContext();
+
+        try {
+
+
+            ServiceReference<?>[] serviceReferences = bc.getAllServiceReferences(null,null);
+
+            for(ServiceReference r:serviceReferences){
+
+                System.out.println(r.getBundle().getSymbolicName() + "======" + r.getBundle().getState());
+
+            }
+           // greeterServiceReference.getBundle().start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+   /* @Inject
+    @Dynamic
+    @Service
+    @Filter("(!(url.handler.protocol=mvn))")
+    private URLStreamHandlerService handler;
+
+    @Inject
+    @Dynamic
+    @Service
+    private ServerControllerFactory serverControllerFactory;
+*/
+
+/*public String getTest() {
+
         return String.format("test, %s, %s", handler, serverControllerFactory);
     }
 
     public void say() {
         result = String.format("Hello %s! (mvn handler: %s, current web runtime: %s)", what, handler, serverControllerFactory);
-    }
+    }*/
 
-}
+    /*@Inject
+    @Dynamic
+    @Service
+    private BundleContext bc;*/
