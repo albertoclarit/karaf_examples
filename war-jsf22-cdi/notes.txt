@@ -60,6 +60,7 @@ feature:install pax-cdi-web-weld-jetty
 bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT
 
 bundle:install -s webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi
+bundle:update 140  webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war
 
 
 https://stackoverflow.com/questions/29714028/osgi-weld-frameworkutil-getbundlecontext-returns-null
@@ -67,7 +68,8 @@ https://help.liferay.com/hc/en-us/articles/360018162711-Declaring-Optional-Impor
 https://help.liferay.com/hc/en-us/articles/360018162711-Declaring-Optional-Import-Package-Requirements
 https://stackoverflow.com/questions/20352400/difference-between-import-package-resolution-optional-and-no-dependency-at-all
 
-
+https://stackoverflow.com/questions/29707758/programmatically-start-an-osgi-folder-bundle
+https://stackoverflow.com/questions/29848664/programmatically-deploying-bundle-into-osgi-runtime
 ========================================================================================
  - no need na ni
 feature:install pax-cdi-openwebbeans  - fixes javax.faces.application.ApplicationFactory

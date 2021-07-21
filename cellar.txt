@@ -1,0 +1,16 @@
+feature:repo-add cellar
+feature:install cellar
+feature:install cellar-dosgi
+cluster:node-list
+
+
+cluster:feature-list default
+cluster:feature-install default http
+cluster:feature-install default webconsole
+cluster:feature-install default http-whiteboard
+cluster:feature-install default war
+cluster:feature-install default pax-jsf-support
+
+cluster:bundle-uninstall default 138 139
+cluster:bundle-install  -s default mvn:org.apache.myfaces.core/myfaces-api/2.3.8
+cluster:bundle-install  -s default mvn:org.apache.myfaces.core/myfaces-impl/2.3.8

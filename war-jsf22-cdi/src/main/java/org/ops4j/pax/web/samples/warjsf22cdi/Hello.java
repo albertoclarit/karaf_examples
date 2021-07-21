@@ -18,7 +18,7 @@
  */
 package org.ops4j.pax.web.samples.warjsf22cdi;
 
-import javax.annotation.PostConstruct;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -26,21 +26,13 @@ import javax.inject.Named;
 import com.inkman.osgi.sample.service.definition.Greeter;
 import org.ops4j.pax.cdi.api.*;
 import org.osgi.framework.*;
-import org.osgi.framework.wiring.FrameworkWiring;
+
+import static org.osgi.framework.Bundle.ACTIVE;
 
 @Named("hello")
 @Immediate
 @Component
 public class Hello {
-
-    @PostConstruct
-    void postContruct(){
-        System.out.println("post construct");
-    }
-    private String what;
-    private String result;
-    private String test = "hello from working JSF 2.2/CDI 1.2 example";
-
 
 
     @Inject
@@ -50,7 +42,9 @@ public class Hello {
     @Greedy
     private Greeter greeter;
 
-
+    private String what;
+    private String result;
+    private long greeterBundleId=-1L;
 
     public void setWhat(String what) {
         this.what = what;
@@ -64,50 +58,75 @@ public class Hello {
         return result;
     }
 
-    public String getTest() {
-
-        return String.format("TEST");
-    }
 
     public void say() {
         result = String.format("%s !", greeter.sayHiTo(what));
     }
 
     public void stopBundle() {
-       // System.out.println("Stopping Greeter Service");
-        BundleContext bc= FrameworkUtil.getBundle(this.getClass()).getBundleContext();
 
-
+      BundleContext bc= FrameworkUtil.getBundle(this.getClass()).getBundleContext();
       ServiceReference<Greeter> greeterServiceReference = bc.getServiceReference(Greeter.class);
         try {
-            greeterServiceReference.getBundle().stop();
+            Bundle greeterBundle = greeterServiceReference.getBundle();
+            greeterBundleId = greeterBundle.getBundleId();
+            if(greeterBundle.getState() == ACTIVE){
+                greeterBundle.stop();
+            }
+
         } catch (BundleException e) {
             e.printStackTrace();
         }
     }
 
-    public void startBundle() {
-       // System.out.println("Starting Greeter Service");
-        Bundle bundle = FrameworkUtil.getBundle(this.getClass());
-        BundleContext bc= bundle.getBundleContext();
+    public void startBundle() throws BundleException {
+
+        if(greeterBundleId > 0){
+            Bundle currentBundle = FrameworkUtil.getBundle(this.getClass());
+            BundleContext bc= currentBundle.getBundleContext();
+
+
+            Bundle bundle =  bc.getBundle(greeterBundleId); // bundle id
+
+
+            if(bundle != null){
+                if(bundle.getState() != ACTIVE){
+                    bundle.start();
+                }
+            }
+        } else {
+            System.out.println("");
+        }
+    }
+
+    private String test = "hello from working JSF 2.2/CDI 1.2 example";
+    public String getTest() {
+
+        return "TEST";
+    }
+
+}
+
+
+  /*
+
+
+  System.out.println("greeterBundleId=" + greeterBundleId);
+
 
         try {
-
-
             ServiceReference<?>[] serviceReferences = bc.getAllServiceReferences(null,null);
-
             for(ServiceReference r:serviceReferences){
-
-                System.out.println(r.getBundle().getSymbolicName() + "======" + r.getBundle().getState());
-
+                //System.out.println(r.getBundle().getSymbolicName() + "======" + r.getBundle().getState());
             }
            // greeterServiceReference.getBundle().start();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+   */
 
-}
+
+
 
    /* @Inject
     @Dynamic
