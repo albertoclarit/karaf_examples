@@ -108,48 +108,4 @@ public class Hello {
 }
 
 
-  /*
 
-
-  System.out.println("greeterBundleId=" + greeterBundleId);
-
-
-        try {
-            ServiceReference<?>[] serviceReferences = bc.getAllServiceReferences(null,null);
-            for(ServiceReference r:serviceReferences){
-                //System.out.println(r.getBundle().getSymbolicName() + "======" + r.getBundle().getState());
-            }
-           // greeterServiceReference.getBundle().start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-   */
-
-
-
-
-   /* @Inject
-    @Dynamic
-    @Service
-    @Filter("(!(url.handler.protocol=mvn))")
-    private URLStreamHandlerService handler;
-
-    @Inject
-    @Dynamic
-    @Service
-    private ServerControllerFactory serverControllerFactory;
-*/
-
-/*public String getTest() {
-
-        return String.format("test, %s, %s", handler, serverControllerFactory);
-    }
-
-    public void say() {
-        result = String.format("Hello %s! (mvn handler: %s, current web runtime: %s)", what, handler, serverControllerFactory);
-    }*/
-
-    /*@Inject
-    @Dynamic
-    @Service
-    private BundleContext bc;*/
