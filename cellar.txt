@@ -14,3 +14,6 @@ cluster:feature-install default pax-jsf-support
 cluster:bundle-uninstall default 138 139
 cluster:bundle-install  -s default mvn:org.apache.myfaces.core/myfaces-api/2.3.8
 cluster:bundle-install  -s default mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
+
+
+https://www.programmersought.com/article/94981251907/
