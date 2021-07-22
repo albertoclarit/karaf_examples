@@ -33,6 +33,6 @@ Install Services Greeter
 
 `bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT`
 
-Instal JSF App
+Install JSF App
 
 `bundle:install -s webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi`
