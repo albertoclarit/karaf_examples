@@ -17,3 +17,4 @@ cluster:bundle-install  -s default mvn:org.apache.myfaces.core/myfaces-impl/2.3.
 
 
 https://www.programmersought.com/article/94981251907/
+https://github.com/apache/karaf-cellar/tree/main/samples/dosgi-greeter

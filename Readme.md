@@ -38,8 +38,8 @@ Building the modules
 `mvn clean install`
 
 Install Services Greeter
-`bundle:install -s mvn:com.inkman/osgi-intro-sample-api/1.0-SNAPSHOT`
-`bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT`
+- `bundle:install -s mvn:com.inkman/osgi-intro-sample-api/1.0-SNAPSHOT`
+- `bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT`
 
 Install JSF App
 
