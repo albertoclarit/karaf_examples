@@ -29,7 +29,7 @@ public class GreeterImpl implements Greeter, BundleActivator {
     @Override public void start(BundleContext context) throws Exception {
         System.out.println("Registering service. In cluster");
        Hashtable<String,String> props= new Hashtable<String, String>();
-        //props.put("service.exported.interfaces", "*");
+        props.put("service.exported.interfaces", "*");
         registration = context.registerService(Greeter.class, new GreeterImpl(), props);
         reference = registration.getReference();
     }
