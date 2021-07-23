@@ -15,23 +15,19 @@ In order to run Pax-CDI successfully these are the features that needs to be ena
 Unfortunately `pax-jsf-support` is using Myfaces 2.2 and Pax-CDI was expecting 
 2.3
 
-We need to remove the module
-- `bundle:list`  and look for the ids of MyFaces libraries
-- `bundle:uninstall [ids space separated]`
+We can proceed with installation of Pax-CDI dependencies
+- `feature:install pax-cdi`
+- `feature:install pax-cdi-web`
+- `feature:install pax-cdi-web-weld`
+- `feature:install pax-cdi-web-weld-jetty`
 
 We can now instal MyFaces 2.3
 - `install    mvn:org.apache.myfaces.core/myfaces-api/2.3.8`
 - `install -s mvn:org.apache.myfaces.core/myfaces-impl/2.3.8`
 
-Start the MyFaces 2.3 bundles which are not active see `list`
-`start [ids space separated]`
-
-We need to activate 
-Then we can proceed with installation of Pax-CDI dependencies
-- `feature:install pax-cdi`
-- `feature:install pax-cdi-web`
-- `feature:install pax-cdi-web-weld`
-- `feature:install pax-cdi-web-weld-jetty`
+Start the MyFaces 2.3 bundles which are not active see 
+- `bundle:list`
+- `start [ids space separated]`
 
 
 Building the modules
