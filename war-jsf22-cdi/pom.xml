@@ -60,7 +60,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.inkman</groupId>
-			<artifactId>osgi-intro-sample-service</artifactId>
+			<artifactId>osgi-intro-sample-api</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
@@ -110,7 +110,7 @@
 									org.osgi.framework
 								</Import-Package>
 								<DynamicImport-Package>
-									com.inkman.osgi.sample.service.definition.*,
+									com.inkman.osgi.sample.service.implementation.*,
 									org.apache.myfaces.*,
 									org.jboss.weld.*,
 									org.ops4j.pax.web.*,

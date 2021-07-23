@@ -44,9 +44,6 @@ feature:install http-whiteboard
 feature:install war
 feature:install pax-jsf-support
 
- uninstall 2.2
-install    mvn:org.apache.myfaces.core/myfaces-api/2.3.8
-install    mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
 
 
 feature:install pax-cdi
@@ -55,13 +52,29 @@ feature:install pax-cdi-web-weld
 feature:install pax-cdi-web-weld-jetty
 
 
+install -s  mvn:org.apache.myfaces.core/myfaces-api/2.3.8
+install -s  mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
+
 === Success from Here ------------
 bundle:install -s mvn:com.inkman/osgi-intro-sample-api/1.0-SNAPSHOT
 bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT
 
 bundle:install -s webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi
-bundle:update 140  webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war
+bundle:update 130  webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war
 
+
+
+bundle:find-class com.sun.el.ExpressionFactoryImpl  - is in hibernate-validator
+bundle:find-class javax.faces.application.ApplicationFactory
+bundle:find-class com.inkman.osgi.sample.service.definition.Greeter
+
+package:exports | grep -i com.sun.el
+package:exports | grep -i javax.faces.webapp
+package:exports | grep -i org.osgi.core
+package:exports | grep -i  javax.faces.application
+package:exports | grep -i javax.enterprise.context
+package:exports | grep -i org.glassfish.javax.faces
+package:exports | grep -i com.inkman.osgi.sample.service.implementation
 
 https://stackoverflow.com/questions/29714028/osgi-weld-frameworkutil-getbundlecontext-returns-null
 https://help.liferay.com/hc/en-us/articles/360018162711-Declaring-Optional-Import-Package-Requirements

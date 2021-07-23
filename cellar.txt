@@ -1,9 +1,20 @@
+install local feature first
+
 feature:repo-add cellar
 feature:install cellar
 feature:install cellar-dosgi
+feature:install cellar-log
 cluster:node-list
 
+==on another node ==
+cluster:producer-stop = on slave nodes
 
+
+cluster:feature-install default  scr
+
+
+
+==== working====
 cluster:feature-list default
 cluster:feature-install default http
 cluster:feature-install default webconsole
@@ -11,10 +22,33 @@ cluster:feature-install default http-whiteboard
 cluster:feature-install default war
 cluster:feature-install default pax-jsf-support
 
-cluster:bundle-uninstall default 138 139
-cluster:bundle-install  -s default mvn:org.apache.myfaces.core/myfaces-api/2.3.8
-cluster:bundle-install  -s default mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
+cluster:bundle-install default mvn:org.apache.myfaces.core/myfaces-api/2.3.8
+cluster:bundle-install default mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
+
+cluster:feature-install default pax-cdi
+cluster:feature-install default pax-cdi-web
+cluster:feature-install default pax-cdi-web-weld
+cluster:feature-install default pax-cdi-web-weld-jetty
+
+cluster:bundle-start default 142 143
+
+cluster:bundle-install -s default mvn:com.inkman/osgi-intro-sample-api/1.0-SNAPSHOT
+cluster:bundle-install -s default mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT
 
 
+cluster:bundle-install -s default webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi
+cluster:service-list
+=====================
+
+cluster:bundle-uninstall default 138 139  - not working
+
+
+
+
+=== not working====
+cluster:bundle-start  default mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
 https://www.programmersought.com/article/94981251907/
 https://github.com/apache/karaf-cellar/tree/main/samples/dosgi-greeter
+
+https://github.com/FlavioF/karaf-dosgi-cellar-kubernetes-example
+https://wiki.eclipse.org/Tutorial:_Building_your_first_OSGi_Remote_Service

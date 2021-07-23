@@ -21,9 +21,9 @@ We need to remove the module
 
 We can now instal MyFaces 2.3
 - `install    mvn:org.apache.myfaces.core/myfaces-api/2.3.8`
-- `install    mvn:org.apache.myfaces.core/myfaces-impl/2.3.8`
+- `install -s mvn:org.apache.myfaces.core/myfaces-impl/2.3.8`
 
-Start the MyFaces 2.3 bundles
+Start the MyFaces 2.3 bundles which are not active see `list`
 `start [ids space separated]`
 
 We need to activate 

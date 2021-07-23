@@ -35,7 +35,8 @@
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-Activator>com.inkman.osgi.sample.service.implementation.GreeterImpl</Bundle-Activator>
-                        <Private-Package>com.inkman.osgi.sample.service.implementation</Private-Package>
+                        <Export-Package>com.inkman.osgi.sample.service.implementation*</Export-Package>
+                       <!-- <Private-Package>com.inkman.osgi.sample.service.implementation</Private-Package>-->
                     <!--    <Export-Package>com.inkman.osgi.sample.service.definition</Export-Package>-->
                     </instructions>
                 </configuration>

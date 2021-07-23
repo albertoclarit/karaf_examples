@@ -6,6 +6,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Hashtable;
 
 public class GreeterImpl implements Greeter, BundleActivator {
@@ -14,12 +16,21 @@ public class GreeterImpl implements Greeter, BundleActivator {
     private ServiceRegistration<Greeter> registration;
 
     @Override public String sayHiTo(String name) {
+        try {
+            String hostName = InetAddress.getLocalHost().getHostName();
+
+            return "Hello From Greeter : [" + name + "] from " + hostName;
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         return "Hello From Greeter : [" + name + "]";
     }
 
     @Override public void start(BundleContext context) throws Exception {
-        System.out.println("Registering service.");
-        registration = context.registerService(Greeter.class, new GreeterImpl(), new Hashtable<String, String>());
+        System.out.println("Registering service. In cluster");
+       Hashtable<String,String> props= new Hashtable<String, String>();
+        props.put("service.exported.interfaces", "*");
+        registration = context.registerService(Greeter.class, new GreeterImpl(), props);
         reference = registration.getReference();
     }
 

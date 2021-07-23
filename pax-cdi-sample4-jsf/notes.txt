@@ -67,7 +67,7 @@ package:exports | grep -i com.sun.el
 package:exports | grep -i javax.faces.webapp
 package:exports | grep -i org.osgi.core
 package:exports | grep -i  javax.faces.application
-
+package:exports | grep -i javax.enterprise.context
 package:exports | grep -i org.glassfish.javax.faces
 
 https://stackoverflow.com/questions/29678113/el-implementation-is-not-found-for-hibernate-validator-in-osgi-container
