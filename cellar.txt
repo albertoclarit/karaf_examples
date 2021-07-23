@@ -30,12 +30,12 @@ cluster:feature-install default pax-cdi-web
 cluster:feature-install default pax-cdi-web-weld
 cluster:feature-install default pax-cdi-web-weld-jetty
 
-cluster:bundle-start default 142 143
+cluster:bundle-start default 141 142
 
 cluster:bundle-install -s default mvn:com.inkman/osgi-intro-sample-api/1.0-SNAPSHOT
+
+
 cluster:bundle-install -s default mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT
-
-
 cluster:bundle-install -s default webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi
 cluster:service-list
 =====================
