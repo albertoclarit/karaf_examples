@@ -19,6 +19,14 @@ We need to remove the module
 - `bundle:list`  and look for the ids of MyFaces libraries
 - `bundle:uninstall [id]`
 
+We can now instal MyFaces 2.3
+- `install    mvn:org.apache.myfaces.core/myfaces-api/2.3.8`
+- `install    mvn:org.apache.myfaces.core/myfaces-impl/2.3.8`
+
+Start the MyFaces 2.3 bundles
+`start [ids]`
+
+We need to activate 
 Then we can proceed with installation of Pax-CDI dependencies
 - `feature:install pax-cdi`
 - `feature:install pax-cdi-web`

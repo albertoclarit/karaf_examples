@@ -45,8 +45,8 @@ feature:install war
 feature:install pax-jsf-support
 
  uninstall 2.2
-install  -s  mvn:org.apache.myfaces.core/myfaces-api/2.3.8
-install  -s  mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
+install    mvn:org.apache.myfaces.core/myfaces-api/2.3.8
+install    mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
 
 
 feature:install pax-cdi
