@@ -56,7 +56,7 @@ feature:install pax-cdi-web-weld-jetty
 
 
 === Success from Here ------------
-
+bundle:install -s mvn:com.inkman/osgi-intro-sample-api/1.0-SNAPSHOT
 bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT
 
 bundle:install -s webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi

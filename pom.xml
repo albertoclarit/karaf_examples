@@ -125,6 +125,7 @@
         <module>web-basic</module>
         <module>pax-cdi-sample4-jsf</module>
      -->
+        <module>osgi-intro-sample-api</module>
         <module>osgi-intro-sample-service</module>
         <module>war-jsf22-cdi</module>
 
