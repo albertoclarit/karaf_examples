@@ -29,6 +29,7 @@ import org.osgi.framework.*;
 
 import static org.osgi.framework.Bundle.ACTIVE;
 
+
 @Named("hello")
 @Immediate
 @Component
@@ -41,6 +42,8 @@ public class Hello {
     @Optional
     @Greedy
     private Greeter greeter;
+
+
 
     private String what;
     private String result;
@@ -58,10 +61,28 @@ public class Hello {
         return result;
     }
 
-
     public void say() {
         result = String.format("%s !", greeter.sayHiTo(what));
     }
+   /* public void say() {
+
+        BundleContext bc= FrameworkUtil.getBundle(this.getClass()).getBundleContext();
+        ServiceReference<Greeter> greeterServiceReference = bc.getServiceReference(Greeter.class);
+
+         if(greeterServiceReference != null){
+             Greeter greeter = bc.getService(greeterServiceReference);
+
+             if(greeter != null){
+                 result = String.format("%s !", greeter.sayHiTo(what));
+             }else {
+                 result = "Greeter [Service]  not found";
+             }
+         }else {
+             result = "Greeter [Service Reference] not found";
+         }
+
+
+    }*/
 
     public void stopBundle() {
 

@@ -40,3 +40,7 @@ Install Services Greeter
 Install JSF App
 
 `bundle:install -s webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi`
+
+# Running in Cellar
+
+# Hawt.io

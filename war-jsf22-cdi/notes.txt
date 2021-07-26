@@ -44,7 +44,8 @@ feature:install http-whiteboard
 feature:install war
 feature:install pax-jsf-support
 
-
+install   mvn:org.apache.myfaces.core/myfaces-api/2.3.8
+install   mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
 
 feature:install pax-cdi
 feature:install pax-cdi-web
@@ -52,15 +53,14 @@ feature:install pax-cdi-web-weld
 feature:install pax-cdi-web-weld-jetty
 
 
-install -s  mvn:org.apache.myfaces.core/myfaces-api/2.3.8
-install -s  mvn:org.apache.myfaces.core/myfaces-impl/2.3.8
+
 
 === Success from Here ------------
 bundle:install -s mvn:com.inkman/osgi-intro-sample-api/1.0-SNAPSHOT
 bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT
 
 bundle:install -s webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi
-bundle:update 130  webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war
+bundle:update 156  webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war
 
 
 

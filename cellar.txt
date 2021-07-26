@@ -10,12 +10,13 @@ cluster:node-list
 cluster:producer-stop = on slave nodes
 
 
-cluster:feature-install default  scr
+
 
 
 
 ==== working====
 cluster:feature-list default
+cluster:feature-install default scr
 cluster:feature-install default http
 cluster:feature-install default webconsole
 cluster:feature-install default http-whiteboard

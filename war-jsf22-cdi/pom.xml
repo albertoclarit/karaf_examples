@@ -16,6 +16,16 @@
 		<maven.compiler.target>8</maven.compiler.target>
 	</properties>
 	<dependencies>
+		<!--<dependency>
+			<groupId>org.apache.karaf.cellar</groupId>
+			<artifactId>org.apache.karaf.cellar.core</artifactId>
+			<version>4.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.shell</groupId>
+			<artifactId>org.apache.karaf.shell.core</artifactId>
+			<version>4.2.11</version>
+		</dependency>-->
 		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>javax.annotation-api</artifactId>
