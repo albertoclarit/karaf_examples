@@ -34,3 +34,6 @@ https://stackoverflow.com/questions/25405894/java-lang-noclassdeffounderror-java
 
 https://stackoverflow.com/questions/18131206/what-is-the-purpose-of-including-empty-beans-xml-in-cdi-implemenations-projects
 
+==== tutorial ===
+
+https://mnlipp.github.io/osgi-getting-started/index.html

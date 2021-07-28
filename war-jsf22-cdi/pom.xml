@@ -58,6 +58,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-api</artifactId>
+			<version>7.2.23</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
 			<artifactId>pax-web-spi</artifactId>
 			<version>7.2.23</version>
 			<scope>provided</scope>
@@ -114,6 +120,7 @@
 									javax.servlet,
 									javax.servlet.http,
 									javax.faces.bean,
+									javax.faces.context,
 									javax.faces.webapp,
 									javax.enterprise*,
 									org.osgi.service.url,

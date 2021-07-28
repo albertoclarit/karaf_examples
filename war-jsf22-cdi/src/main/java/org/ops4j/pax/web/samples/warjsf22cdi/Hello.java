@@ -19,12 +19,15 @@
 package org.ops4j.pax.web.samples.warjsf22cdi;
 
 
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
 
 
 import com.inkman.osgi.sample.service.definition.Greeter;
 import org.ops4j.pax.cdi.api.*;
+import org.ops4j.pax.web.service.WebContainerConstants;
 import org.osgi.framework.*;
 
 import static org.osgi.framework.Bundle.ACTIVE;
@@ -36,13 +39,9 @@ import static org.osgi.framework.Bundle.ACTIVE;
 public class Hello {
 
 
-    @Inject
-    @Dynamic
+   /* @Inject
     @Service
-    @Optional
-    @Greedy
-    private Greeter greeter;
-
+    private DynamicClient dynamicClient;*/
 
 
     private String what;
@@ -61,28 +60,42 @@ public class Hello {
         return result;
     }
 
-    public void say() {
-        result = String.format("%s !", greeter.sayHiTo(what));
-    }
-   /* public void say() {
-
-        BundleContext bc= FrameworkUtil.getBundle(this.getClass()).getBundleContext();
-        ServiceReference<Greeter> greeterServiceReference = bc.getServiceReference(Greeter.class);
-
-         if(greeterServiceReference != null){
-             Greeter greeter = bc.getService(greeterServiceReference);
-
-             if(greeter != null){
-                 result = String.format("%s !", greeter.sayHiTo(what));
-             }else {
-                 result = "Greeter [Service]  not found";
-             }
-         }else {
-             result = "Greeter [Service Reference] not found";
-         }
-
-
+  /* public void say() {
+        result = String.format("%s !", dynamicClient.say(what));
     }*/
+  public void say() {
+
+      ServletContext servletContext = (ServletContext) FacesContext
+              .getCurrentInstance().getExternalContext().getContext();
+
+
+       // BundleContext bc= FrameworkUtil.getBundle(this.getClass()).getBundleContext();
+
+      BundleContext bc = (BundleContext) servletContext.getAttribute(
+              WebContainerConstants.BUNDLE_CONTEXT_ATTRIBUTE);
+      ServiceReference<Greeter>[] greeterServiceReference = null;
+      try {
+          greeterServiceReference = (ServiceReference<Greeter>[]) bc.getAllServiceReferences(Greeter.class.getName(),null);
+
+
+          if(greeterServiceReference != null && greeterServiceReference.length > 0){
+              Greeter greeter = bc.getService(greeterServiceReference[0]);
+
+              if(greeter != null){
+                  result = String.format("%s say 2!", greeter.sayHiTo(what));
+              }else {
+                  result = "Greeter [Service]  not found";
+              }
+          }else {
+              result = "No Service Found";
+          }
+      } catch (InvalidSyntaxException e) {
+          e.printStackTrace();
+      }
+
+
+
+    }
 
     public void stopBundle() {
 

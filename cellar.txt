@@ -53,3 +53,8 @@ https://github.com/apache/karaf-cellar/tree/main/samples/dosgi-greeter
 
 https://github.com/FlavioF/karaf-dosgi-cellar-kubernetes-example
 https://wiki.eclipse.org/Tutorial:_Building_your_first_OSGi_Remote_Service
+
+=====
+setenv
+hazelcast.xml
+org.apache.karaf.cellar.groups
