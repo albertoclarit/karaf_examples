@@ -39,10 +39,10 @@ import static org.osgi.framework.Bundle.ACTIVE;
 public class Hello {
 
 
-    @Inject
+  /*  @Inject
     @Service
     private DynamicClient dynamicClient;
-
+*/
 
     private String what;
     private String result;
@@ -60,23 +60,26 @@ public class Hello {
         return result;
     }
 
-   public void say() {
+   /*public void say() {
         result = String.format("%s !", dynamicClient.say(what));
-    }
+    }*/
 
     /*
     https://www.north-47.com/knowledge-base/how-to-get-a-service-reference-or-bundlecontext-with-no-osgi-context/
     https://stackoverflow.com/questions/6527306/best-technique-for-getting-the-osgi-bundle-context
      */
-    public void say1() {
+  /*  public void say1() {
         BundleContext bundleContext = FrameworkUtil.getBundle(Greeter.class).getBundleContext();
         ServiceReference<Greeter> serviceReference = bundleContext.getServiceReference(Greeter.class);
 
        Greeter greeter = bundleContext.getService(serviceReference);
         result = String.format("%s !", greeter.sayHiTo(what));
-    }
-  /*public void say() {
+    }*/
+  public void say() {
 
+      ClassLoader originalClassLoader = Thread.currentThread().getContextClassLoader();
+
+      Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
       ServletContext servletContext = (ServletContext) FacesContext
               .getCurrentInstance().getExternalContext().getContext();
 
@@ -101,13 +104,10 @@ public class Hello {
                       greeter = bc.getService(reference);
                   }
               }
-
-
-
           }
 
               if(greeter != null){
-                  result = String.format("%s say 2!", greeter.sayHiTo(what));
+                  result = String.format("%s say 2!", greeter.sayHiTo(what).getMessage());
               }else {
                   result = "Greeter [Service]  not found";
               }
@@ -117,10 +117,11 @@ public class Hello {
           e.printStackTrace();
       }
 
-
+      Thread.currentThread().setContextClassLoader(originalClassLoader);
 
     }
-*/
+
+
     public void stopBundle() {
 
       BundleContext bc= FrameworkUtil.getBundle(this.getClass()).getBundleContext();
