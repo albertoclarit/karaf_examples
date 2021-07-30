@@ -128,6 +128,7 @@
         <module>osgi-intro-sample-api</module>
         <module>osgi-intro-sample-service</module>
         <module>war-jsf22-cdi</module>
+        <module>cmdbundle</module>
 
     </modules>
 

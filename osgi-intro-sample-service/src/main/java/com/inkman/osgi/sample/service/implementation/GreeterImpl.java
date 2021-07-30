@@ -1,6 +1,7 @@
 package com.inkman.osgi.sample.service.implementation;
 
 import com.inkman.osgi.sample.service.definition.Greeter;
+import com.inkman.osgi.sample.service.definition.GreetingResponse;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -15,15 +16,15 @@ public class GreeterImpl implements Greeter, BundleActivator {
     private ServiceReference<Greeter> reference;
     private ServiceRegistration<Greeter> registration;
 
-    @Override public String sayHiTo(String name) {
+    @Override public GreetingResponse sayHiTo(String name) {
         try {
             String hostName = InetAddress.getLocalHost().getHostName();
 
-            return "Hello From Greeter : [" + name + "] from " + hostName;
+            return new GreetingResponse("Hello From Greeter : [" + name + "] from " + hostName);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        return "Hello From Greeter : [" + name + "]";
+        return new GreetingResponse("Hello From Greeter : [" + name + "]");
     }
 
     @Override public void start(BundleContext context) throws Exception {
