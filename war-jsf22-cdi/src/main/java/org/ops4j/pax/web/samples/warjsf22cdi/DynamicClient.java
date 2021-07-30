@@ -2,6 +2,7 @@ package org.ops4j.pax.web.samples.warjsf22cdi;
 
 
 import com.inkman.osgi.sample.service.definition.Greeter;
+import com.inkman.osgi.sample.service.definition.GreetingResponse;
 import org.ops4j.pax.cdi.api.*;
 
 import javax.inject.Inject;
@@ -20,7 +21,8 @@ public class DynamicClient {
 
 
     String say(String name ){
-        return String.format("%s dynamic!", greeter.sayHiTo(name));
+        GreetingResponse response =greeter.sayHiTo(name);
+        return String.format("%s dynamic!", response.getMessage() );
     }
 
 
