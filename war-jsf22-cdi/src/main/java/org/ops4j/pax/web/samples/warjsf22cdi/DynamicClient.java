@@ -9,12 +9,12 @@ import javax.enterprise.inject.Any;
 import javax.inject.Inject;
 
 
-//@Service
-//@Global
+@Service
+@Global
 public class DynamicClient {
 
 
-  /*  @Inject
+    @Inject
     @Dynamic
     @Service
     @Optional
@@ -25,7 +25,7 @@ public class DynamicClient {
     String say(String name ){
         GreetingResponse response =greeter.sayHiTo(name);
         return String.format("%s dynamic!", response.getMessage() );
-    }*/
+    }
 
 
 }

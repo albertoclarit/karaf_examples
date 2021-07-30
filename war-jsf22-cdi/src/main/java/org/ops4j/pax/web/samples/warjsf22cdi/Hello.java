@@ -41,10 +41,10 @@ import static org.osgi.framework.Bundle.ACTIVE;
 public class Hello {
 
 
-  /*  @Inject
+    @Inject
     @Service
     private DynamicClient dynamicClient;
-*/
+
 
     private String what;
     private String result;
@@ -62,9 +62,9 @@ public class Hello {
         return result;
     }
 
-   /*public void say() {
+   public void say() {
         result = String.format("%s !", dynamicClient.say(what));
-    }*/
+    }
 
     /*
     https://www.north-47.com/knowledge-base/how-to-get-a-service-reference-or-bundlecontext-with-no-osgi-context/
@@ -77,7 +77,7 @@ public class Hello {
        Greeter greeter = bundleContext.getService(serviceReference);
         result = String.format("%s !", greeter.sayHiTo(what));
     }*/
-    public void say() throws InvalidSyntaxException, InterruptedException {
+    public void say2() throws InvalidSyntaxException, InterruptedException {
 
         ServletContext servletContext = (ServletContext) FacesContext
                 .getCurrentInstance().getExternalContext().getContext();
