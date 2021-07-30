@@ -1,3 +1,11 @@
+# Installing Apache Karaf
+
+- Download at http://www.apache.org/dyn/closer.lua/karaf/4.2.11/apache-karaf-4.2.11.zip
+- Extract and add to PATH environmental variables the location of the bin folder
+
+## Configuration 
+- https://karaf.apache.org/manual/latest/#_user_guide
+
 
 # Pax-CDI Implementation Code Discovery
 
@@ -42,5 +50,7 @@ Install JSF App
 `bundle:install -s webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi`
 
 # Running in Cellar
+
+
 
 # Hawt.io

@@ -6,11 +6,11 @@ import org.ops4j.pax.cdi.api.*;
 
 import javax.inject.Inject;
 
-//@Service
-//@Global
+@Service
+@Global
 public class DynamicClient {
 
-/*
+
     @Inject
     @Dynamic
     @Service
@@ -22,6 +22,6 @@ public class DynamicClient {
     String say(String name ){
         return String.format("%s dynamic!", greeter.sayHiTo(name));
     }
-*/
+
 
 }

@@ -37,3 +37,4 @@ https://stackoverflow.com/questions/18131206/what-is-the-purpose-of-including-em
 ==== tutorial ===
 
 https://mnlipp.github.io/osgi-getting-started/index.html
+https://mnlipp.github.io/osgi-getting-started/index.html

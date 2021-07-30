@@ -4,6 +4,7 @@ feature:repo-add cellar
 feature:install cellar
 feature:install cellar-dosgi
 feature:install cellar-log
+feature:install cellar-eventadmin
 cluster:node-list
 
 ==on another node ==
@@ -30,6 +31,8 @@ cluster:feature-install default pax-cdi
 cluster:feature-install default pax-cdi-web
 cluster:feature-install default pax-cdi-web-weld
 cluster:feature-install default pax-cdi-web-weld-jetty
+
+cluster:feature-install default cellar-http-balancer
 
 cluster:bundle-start default 141 142
 
@@ -58,3 +61,6 @@ https://wiki.eclipse.org/Tutorial:_Building_your_first_OSGi_Remote_Service
 setenv
 hazelcast.xml
 org.apache.karaf.cellar.groups
+
+https://www.north-47.com/knowledge-base/how-to-get-a-service-reference-or-bundlecontext-with-no-osgi-context/
+
