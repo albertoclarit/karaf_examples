@@ -29,6 +29,8 @@ import com.inkman.osgi.sample.service.definition.Greeter;
 import org.ops4j.pax.cdi.api.*;
 import org.ops4j.pax.web.service.WebContainerConstants;
 import org.osgi.framework.*;
+import org.osgi.framework.Filter;
+import org.osgi.util.tracker.ServiceTracker;
 
 import static org.osgi.framework.Bundle.ACTIVE;
 
@@ -75,7 +77,31 @@ public class Hello {
        Greeter greeter = bundleContext.getService(serviceReference);
         result = String.format("%s !", greeter.sayHiTo(what));
     }*/
-  public void say() {
+    public void say() throws InvalidSyntaxException, InterruptedException {
+
+        ServletContext servletContext = (ServletContext) FacesContext
+                .getCurrentInstance().getExternalContext().getContext();
+
+        BundleContext bc = (BundleContext) servletContext.getAttribute(
+                WebContainerConstants.BUNDLE_CONTEXT_ATTRIBUTE);
+
+        Filter osgiFilter = FrameworkUtil.createFilter( "(objectclass=" + Greeter.class.getName() + ")" );
+        ServiceTracker tracker = new ServiceTracker( bc, osgiFilter, null );
+        tracker.open( true );
+
+        Greeter svc = (Greeter) tracker.waitForService(5000l);
+
+        if(svc != null){
+            result =  String.format("Using Service Tracker %s", svc.sayHiTo(what).getMessage());
+        }
+        else
+
+        {
+            result = "Using Service Tracker Greeter [Service]  not found";
+        }
+
+    }
+  public void say1() {
 
       ClassLoader originalClassLoader = Thread.currentThread().getContextClassLoader();
 

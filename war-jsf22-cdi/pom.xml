@@ -38,6 +38,7 @@
 			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -124,7 +125,8 @@
 									javax.faces.webapp,
 									javax.enterprise*,
 									org.osgi.service.url,
-									org.osgi.framework
+									org.osgi.framework,
+									org.osgi.util.tracker
 								</Import-Package>
 								<DynamicImport-Package>
 									com.inkman.osgi.sample.service.implementation.*,

@@ -60,7 +60,7 @@ bundle:install -s mvn:com.inkman/osgi-intro-sample-api/1.0-SNAPSHOT
 bundle:install -s mvn:com.inkman/osgi-intro-sample-service/1.0-SNAPSHOT
 
 bundle:install -s webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war?Web-ContextPath=war-jsf22-cdi
-bundle:update 156  webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war
+bundle:update 155  webbundle:mvn:org.ops4j.pax.web.samples/war-jsf22-cdi/1.0-SNAPSHOT/war
 
 
 
@@ -75,7 +75,7 @@ package:exports | grep -i  javax.faces.application
 package:exports | grep -i javax.enterprise.context
 package:exports | grep -i org.glassfish.javax.faces
 package:exports | grep -i com.inkman.osgi.sample.service.implementation
-
+package:exports | grep -i org.ops4j.pax.web.service.spi
 https://stackoverflow.com/questions/29714028/osgi-weld-frameworkutil-getbundlecontext-returns-null
 https://help.liferay.com/hc/en-us/articles/360018162711-Declaring-Optional-Import-Package-Requirements
 https://help.liferay.com/hc/en-us/articles/360018162711-Declaring-Optional-Import-Package-Requirements
@@ -122,3 +122,6 @@ install  -s  mvn:commons-digester/commons-digester/2.0
 
 
 ============== July 30 another code discovery =========
+https://cxf.apache.org/distributed-osgi-reference.html
+http://www.javased.com/?api=org.osgi.framework.FrameworkUtil
+http://www.javased.com/index.php?source_dir=DirectMemory/itests/osgi/src/test/java/org/apache/directmemory/tests/osgi/DirectMemoryOsgiTestSupport.java
